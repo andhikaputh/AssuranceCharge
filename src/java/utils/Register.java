@@ -49,7 +49,7 @@ public class Register extends HttpServlet{
             String hashpassword = sb.toString();
             
             if(Connections.createuser(email, hashpassword)){
-                pw.println("Buat akun untuk email :  "+email+" telah berhasil");
+                resp.sendRedirect("index.jsp");
             }else {
                 pw.println("gagal");
             }
@@ -58,7 +58,7 @@ public class Register extends HttpServlet{
                 pw.print(e);
             }
         }
-        pw.println("<h4><a href=\"index.jsp\">Silahkan click link ini untuk login</a></h4>");
+        
         pw.println("</html></body>");
     }
     

@@ -71,7 +71,7 @@ public class Main extends HttpServlet{
 "            </div>\n" +
 "        </div>\n" +
 "        <div class=\"col py-3\">\n" +
-"            Selamat datang admin\n" +
+"            Dashboard Admin\n" +
 "     \n" +
 "\n" +
 "\n" +

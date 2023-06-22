@@ -210,6 +210,35 @@ public class predict extends HttpServlet{
         BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
         String line;
         while((line = reader.readLine())!= null){
+            writer.println("Age :"+stringAge);
+            writer.println("<br>");
+            if(stringGender.equals("0")){
+                writer.println("Gender : Female");
+            }else if(stringGender.equals("1")){
+                writer.println("Gender : Male");
+            }
+            writer.println("<br>");
+            writer.println("BMI :"+stringBMI);
+            writer.println("<br>");
+            writer.println("Children :" + stringChildren);
+            writer.println("<br>");
+            if(stringSmoker.equals("1")){
+                writer.println("Perokok : Iya");
+            }else if(stringSmoker.equals("0")){
+                writer.println("Perokok : Tidak");
+            }
+            writer.println("<br>");
+            if(stringRegion.equals("0")){
+                writer.println("Kota : Southwest");
+            }else if (stringRegion.equals("1")){
+                writer.println("Kota :Southeast ");
+            }else if (stringRegion.equals("2")){
+                writer.println("Kota : Northwest");
+            }else if (stringRegion.equals("3")){
+                writer.println("Kota : Northeast");
+            }
+            writer.println();
+           
             writer.println("<h4> Charges Assurance = "  + line + "</h4>");
             System.out.println(line);
         }

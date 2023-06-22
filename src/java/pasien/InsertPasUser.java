@@ -214,11 +214,11 @@ public class InsertPasUser extends HttpServlet{
         
         
         if(Connections.insert(age, gender, bmi, children, smoker, region, charges)){
-            pw.println("Insert berhasil");
+            resp.sendRedirect("html/TampilanUser.html");
         }else {
             pw.println("gagal");
         }
-        pw.println("<h4><a href=\"html/TampilanUser.html\">Kembali ke Menu Utama</a></h4>");
+        
         pw.println("</html></body>");
         
         
