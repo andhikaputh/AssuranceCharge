@@ -57,7 +57,7 @@ public class Main extends HttpServlet{
 "                    </li>\n" +
                 "                    <li class=\"nav-item\">\n" +
 "                        <a href=\"InsertPas\" class=\"nav-link align-middle px-0\">\n" +
-"                            <i class=\"fs-4 bi-house\"></i> <span class=\"ms-1 d-none d-sm-inline\">Insert Data Assurance</span>\n" +
+"                            <i class=\"fs-4 bi-house\"></i> <span class=\"ms-1 d-none d-sm-inline\">Insert Medical Cost Data</span>\n" +
 "                        </a>\n" +
 "                    </li>\n" +
 

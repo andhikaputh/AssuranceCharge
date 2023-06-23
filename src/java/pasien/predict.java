@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-
+import java.text.DecimalFormat;
 /**
  *
  * @author andhi
@@ -183,6 +183,8 @@ public class predict extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter writer = resp.getWriter();
+        DecimalFormat decimalFormat = new DecimalFormat("###,###.##");
+        decimalFormat.setMaximumFractionDigits(2);
         writer.println("<html>");
         writer.println("<h2>Hasil prediksi salary</h2>");
         String stringAge = req.getParameter("age");
@@ -210,6 +212,7 @@ public class predict extends HttpServlet{
         BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
         String line;
         while((line = reader.readLine())!= null){
+            line = line.replaceAll("\\[|\\]", "");
             writer.println("Age :"+stringAge);
             writer.println("<br>");
             if(stringGender.equals("0")){
@@ -239,7 +242,10 @@ public class predict extends HttpServlet{
             }
             writer.println();
            
-            writer.println("<h4> Charges Assurance = "  + line + "</h4>");
+            
+            double charge = Double.parseDouble(line);
+            String formatcharge = decimalFormat.format(charge);
+            writer.println("<h4> Charges Assurance = "  + formatcharge + "</h4>");
             System.out.println(line);
         }
         writer.println("<a href=\"html/TampilanUser.html\">Kembali ke Menu Utama</a>");

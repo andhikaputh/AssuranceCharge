@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import utils.Connections;
 import java.util.logging.Logger;
 import java.util.logging.Level;
-
+import java.text.DecimalFormat;
 @WebServlet(name = "ShowPas", urlPatterns = {"/ShowPas"})
 public class ShowPas extends HttpServlet{
 
@@ -38,6 +38,7 @@ public class ShowPas extends HttpServlet{
         PrintWriter pw = resp.getWriter();
          try{
             rs = Connections.selectALL("datapasien");
+            DecimalFormat df = new DecimalFormat("###,###.##");
             pw.println("<html lang=\"en\">\n" +
 "<head>\n" +
 "    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\n" +
@@ -115,7 +116,8 @@ public class ShowPas extends HttpServlet{
                pw.println("<td>"+children+"</td>");
                pw.println("<td>"+smoker+"</td>");
                pw.println("<td>"+region+"</td>");
-               pw.println("<td>"+charges+"</td>");
+               String formatcharge = df.format(charges);
+               pw.println("<td>"+formatcharge+"</td>");
                pw.println("<td><a href = UpdatePas?id="+id+"&age="+age+"&gender="+gendervalue+"&bmi="+bmi+"&children="+children+"&smoker="+smoker+"&region="+region+"&charges="+charges+">Edit</a></td>");
                pw.println("<td><a href = DeletePas?id="+id+"&age="+age+"&gender="+gendervalue+"&bmi="+bmi+"&children="+children+"&smoker="+smoker+"&region="+region+"&charges="+charges+">Delete</a></td>");
                pw.println("</tr>");

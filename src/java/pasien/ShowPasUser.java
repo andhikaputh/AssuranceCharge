@@ -18,7 +18,7 @@ import java.sql.SQLException;
 import utils.Connections;
 import java.util.logging.Logger;
 import java.util.logging.Level;
-
+import java.text.DecimalFormat;
 /**
  *
  * @author andhi
@@ -44,6 +44,7 @@ public class ShowPasUser extends HttpServlet{
         PrintWriter pw = resp.getWriter();
          try{
             rs = Connections.selectALL("datapasien");
+            DecimalFormat df = new DecimalFormat("###,###.##");
             pw.println("<html lang=\"en\">\n" +
 "<head>\n" +
 "    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\n" +
@@ -61,7 +62,7 @@ public class ShowPasUser extends HttpServlet{
 "            <section class=\"main\">\n" +
                     "        <a href = 'html/TampilanUser.html'><i class=\"fa fa-home\"></i></a>\n" +
 "      <div class=\"main-top\">\n" +
-"        <h1>Real Time Assurance charge data</h1>\n" +
+"        <h1>Real Time Medical Cost Data</h1>\n" +
 
 "      </div>\n" +
 "      <table class=\"table\">\n" +
@@ -98,7 +99,8 @@ public class ShowPasUser extends HttpServlet{
                pw.println("<td>"+children+"</td>");
                pw.println("<td>"+smoker+"</td>");
                pw.println("<td>"+region+"</td>");
-               pw.println("<td>"+charges+"</td>");
+               String formatcharge = df.format(charges);
+               pw.println("<td>"+formatcharge+"</td>");
                pw.println("</tr>");
                pw.println("</tbody>");
             }

@@ -93,7 +93,7 @@ public class InsertPas extends HttpServlet{
 "</head>\n" +
 "<body>\n" +
 "\n" +
-"<h2>Insert Assurance Data</h2>\n" +
+"<h2>Insert Medical Cost</h2>\n" +
 "<p>Bantu kami dalam mendata asuransi agar kami dapat membuat prediksi yang lebih baik ke depannya. Trimakasih</p>\n" +
 "\n" +
 "<div class=\"container\">\n" +
